@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eff08908730b3d7614800073e24f7f11",
+    "content-hash": "445b8a15959fdc3902b217a6c6d68129",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2499,12 +2499,18 @@
             "time": "2021-05-23T15:12:33+00:00"
         },
         {
-            "name": "stackflows/laravel-plugin-stackflows",
+            "name": "stackflows-com/laravel-plugin-stackflows",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stackflows-com/laravel-plugin-stackflows.git",
+                "reference": "016f335211673a3ac25779e92da4a3110dd2762b"
+            },
             "dist": {
-                "type": "path",
-                "url": "../gateway-plugin",
-                "reference": "e0e4214e6f1c0e7f9876e3bc76d546567de7ee32"
+                "type": "zip",
+                "url": "https://api.github.com/repos/stackflows-com/laravel-plugin-stackflows/zipball/016f335211673a3ac25779e92da4a3110dd2762b",
+                "reference": "016f335211673a3ac25779e92da4a3110dd2762b",
+                "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^8.37",
@@ -2519,6 +2525,7 @@
                 "spatie/laravel-ray": "^1.9",
                 "vimeo/psalm": "^4.4"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -2569,9 +2576,11 @@
                 "laravel",
                 "laravel-plugin-stackflows"
             ],
-            "transport-options": {
-                "relative": true
-            }
+            "support": {
+                "source": "https://github.com/stackflows-com/laravel-plugin-stackflows/tree/develop",
+                "issues": "https://github.com/stackflows-com/laravel-plugin-stackflows/issues"
+            },
+            "time": "2021-06-02T17:14:41+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -7469,7 +7478,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "stackflows-com/laravel-plugin-stackflows": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
