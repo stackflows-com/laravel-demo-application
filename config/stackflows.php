@@ -19,4 +19,11 @@ return [
         \App\Stackflows\ServiceTask\DemoExecutor::class,
     ],
 
+    /*
+     * User task synchronizers are classes that handle Stackflows service tasks.
+     * Must implements interface \Stackflows\StackflowsPlugin\Services\UserTask\UserTaskSyncInterface
+     */
+    'user_task_sync' => [
+        \App\Stackflows\UserTask\DemoSynchronizer::class,
+    ],
 ];
