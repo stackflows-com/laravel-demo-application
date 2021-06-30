@@ -1,18 +1,10 @@
 <?php
 
+use App\Http\Controllers\SignalController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'welcome');
+
+Route::get('/throw-signal', [SignalController::class, 'create'])->name('signals.create');
+Route::post('/throw-signal', [SignalController::class, 'store'])->name('signals.store');

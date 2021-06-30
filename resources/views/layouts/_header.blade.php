@@ -4,7 +4,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto me-auto">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Throw signal</a>
+                        <a class="nav-link" href="{{ route('signals.create') }}">Throw signal</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">User tasks</a>
