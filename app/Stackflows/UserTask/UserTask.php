@@ -6,23 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Stackflows\StackflowsPlugin\Services\UserTask\InternalStackflowsUserTaskModel;
 
-class UserTask implements InternalStackflowsUserTaskModel
+class UserTask extends Model implements InternalStackflowsUserTaskModel
 {
-    private string $id;
-    private ?string $stackflowsUserTaskKey;
-    private ?string $stackflowsUserTaskDefinitionKey;
-
-    public function __construct(?string $stackflowsUserTaskKey, ?string $stackflowsUserTaskDefinitionKey)
-    {
-        $this->id = (string)Str::uuid();
-        $this->stackflowsUserTaskKey = $stackflowsUserTaskKey;
-        $this->stackflowsUserTaskDefinitionKey = $stackflowsUserTaskDefinitionKey;
-    }
-
-    public function getKey(): string
-    {
-        return $this->id;
-    }
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var string[]|bool
+     */
+    protected $guarded = [];
 
     public function getStackflowsUserTaskKey(): string
     {
@@ -32,5 +23,16 @@ class UserTask implements InternalStackflowsUserTaskModel
     public function getStackflowsUserTaskDefinitionKey(): string
     {
         return $this->stackflowsUserTaskDefinitionKey;
+    }
+
+    /**
+     * Scope a query to only include pending user tasks.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePending($query)
+    {
+        return $query->where('completed', false);
     }
 }

@@ -7,7 +7,7 @@
                         <a class="nav-link" href="{{ route('signals.create') }}">Throw signal</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">User tasks</a>
+                        <a class="nav-link" href="{{ route('user_tasks.index') }}">User tasks</a>
                     </li>
                 </ul>
             </div>
