@@ -17,6 +17,7 @@ return [
      */
     'service_task_executors' => [
         \App\Stackflows\ServiceTask\DemoExecutor::class,
+        \App\Stackflows\ServiceTask\GenerateNumberExecutor::class,
     ],
 
     /*
