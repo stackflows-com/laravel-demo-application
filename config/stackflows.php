@@ -25,5 +25,6 @@ return [
      */
     'user_task_sync' => [
         \App\Stackflows\UserTask\DemoSynchronizer::class,
+        \App\Stackflows\UserTask\SolveNumberSynchronizer::class,
     ],
 ];
