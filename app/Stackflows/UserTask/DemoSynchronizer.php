@@ -26,7 +26,12 @@ class DemoSynchronizer implements UserTaskSyncInterface
 
     private function createTask(ApiUserTask $task): UserTask
     {
-        return new UserTask($task->getId(), $task->getTaskDefinitionKey());
+        return new UserTask(
+            [
+                'stackflows_id' => $task->getId(),
+                'reference' => $task->getTaskDefinitionKey(),
+            ]
+        );
     }
 
     private function executeTask(UserTask $task): void

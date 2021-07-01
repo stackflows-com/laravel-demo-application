@@ -2,6 +2,8 @@
 
 namespace App\Stackflows\UserTask;
 
+use App\Casts\UserTaskStatus;
+use App\Stackflows\TaskStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Stackflows\StackflowsPlugin\Services\UserTask\InternalStackflowsUserTaskModel;
@@ -15,14 +17,23 @@ class UserTask extends Model implements InternalStackflowsUserTaskModel
      */
     protected $guarded = [];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'status' => UserTaskStatus::class,
+    ];
+
     public function getStackflowsUserTaskKey(): string
     {
-        return $this->stackflowsUserTaskKey;
+        return $this->stackflows_id;
     }
 
     public function getStackflowsUserTaskDefinitionKey(): string
     {
-        return $this->stackflowsUserTaskDefinitionKey;
+        return $this->reference;
     }
 
     /**
@@ -33,6 +44,6 @@ class UserTask extends Model implements InternalStackflowsUserTaskModel
      */
     public function scopePending($query)
     {
-        return $query->where('completed', false);
+        return $query->where('status', TaskStatus::PENDING);
     }
 }

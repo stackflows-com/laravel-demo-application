@@ -17,10 +17,10 @@ class CreateUserTasksTable extends Migration
             $table->id();
             $table->string('stackflows_id')->nullable();
             $table->string('reference')->nullable();
-            $table->boolean('completed')->default(false);
+            $table->integer('status')->default(0);
             $table->timestamps();
 
-            $table->index('completed');
+            $table->index('status');
         });
     }
 
