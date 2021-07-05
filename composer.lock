@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "445b8a15959fdc3902b217a6c6d68129",
+    "content-hash": "879342fe7791bee65538de0f911a8f54",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2500,32 +2500,34 @@
         },
         {
             "name": "stackflows-com/laravel-plugin-stackflows",
-            "version": "dev-main",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stackflows-com/laravel-plugin-stackflows.git",
-                "reference": "016f335211673a3ac25779e92da4a3110dd2762b"
+                "reference": "6eb8a75de2732e56de92a48339b51fb1b4c365bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stackflows-com/laravel-plugin-stackflows/zipball/016f335211673a3ac25779e92da4a3110dd2762b",
-                "reference": "016f335211673a3ac25779e92da4a3110dd2762b",
+                "url": "https://api.github.com/repos/stackflows-com/laravel-plugin-stackflows/zipball/6eb8a75de2732e56de92a48339b51fb1b4c365bd",
+                "reference": "6eb8a75de2732e56de92a48339b51fb1b4c365bd",
                 "shasum": ""
             },
             "require": {
+                "ext-pcntl": "*",
                 "illuminate/contracts": "^8.37",
                 "php": "^8.0",
-                "spatie/laravel-package-tools": "^1.4.3"
+                "spatie/laravel-package-tools": "^1.4.3",
+                "stackflows-com/php-client-stackflows": "dev-master"
             },
             "require-dev": {
                 "brianium/paratest": "^6.2",
+                "jetbrains/phpstorm-attributes": "^1.0",
                 "nunomaduro/collision": "^5.3",
                 "orchestra/testbench": "^6.15",
                 "phpunit/phpunit": "^9.3",
                 "spatie/laravel-ray": "^1.9",
                 "vimeo/psalm": "^4.4"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -2580,7 +2582,66 @@
                 "source": "https://github.com/stackflows-com/laravel-plugin-stackflows/tree/develop",
                 "issues": "https://github.com/stackflows-com/laravel-plugin-stackflows/issues"
             },
-            "time": "2021-06-02T17:14:41+00:00"
+            "time": "2021-07-01T15:53:30+00:00"
+        },
+        {
+            "name": "stackflows-com/php-client-stackflows",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stackflows-com/php-client-stackflows.git",
+                "reference": "b67a2ae596a85a0d58ca901025ac489618abe998"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stackflows-com/php-client-stackflows/zipball/b67a2ae596a85a0d58ca901025ac489618abe998",
+                "reference": "b67a2ae596a85a0d58ca901025ac489618abe998",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "guzzlehttp/guzzle": "^6.2 || ^7.0",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.12",
+                "phpunit/phpunit": "^8.0 || ^9.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Stackflows\\GatewayApi\\": "lib/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Stackflows\\GatewayApi\\Test\\": "test/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "OpenAPI-Generator contributors",
+                    "homepage": "https://openapi-generator.tech"
+                }
+            ],
+            "description": "Stackflows Gateway API",
+            "homepage": "https://github.com/stackflows-com/php-client-stackflows",
+            "keywords": [
+                "php",
+                "sdk",
+                "stackflows-client"
+            ],
+            "support": {
+                "source": "https://github.com/stackflows-com/php-client-stackflows/tree/master",
+                "issues": "https://github.com/stackflows-com/php-client-stackflows/issues"
+            },
+            "time": "2021-07-02T15:52:32+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -7484,7 +7545,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"

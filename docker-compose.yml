@@ -1,0 +1,48 @@
+version: '3.3'
+services:
+  nginx:
+    build:
+      context: ./docker/dev
+      dockerfile: ./nginx/Dockerfile
+    ports:
+      - "${NGINX_HOST_PORT}:80"
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+
+  # PHP FastCGI Process Manager container
+  php:
+    build:
+      context: ./docker/dev
+      dockerfile: ./php/Dockerfile
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+
+  worker:
+    build:
+      context: ./docker/dev
+      dockerfile: ./supervisor/Dockerfile
+    volumes:
+      - type: bind
+        source: .
+        target: /app
+
+  db:
+    image: mariadb:10.6
+    #    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+    ports:
+      - "${MYSQL_HOST_PORT}:3306"
+    volumes:
+      - database:/var/lib/mysql
+
+volumes:
+  database:
+    driver: local
