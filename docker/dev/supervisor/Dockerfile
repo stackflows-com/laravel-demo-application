@@ -27,17 +27,11 @@ RUN docker-php-ext-install mbstring zip exif pcntl \
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 RUN docker-php-ext-install gd
 
-# Add user for laravel application
-#RUN groupadd -g 1000 www
-#RUN useradd -u 1000 -ms /bin/bash -g www www
-
-# Change current user to www
-#USER www
-
 # Define working directory
-WORKDIR /etc/supervisor/conf.d
+WORKDIR /app
 
 # Use local configuration
-COPY ./supervisor/supervisord.conf /etc/supervisord.conf
+COPY ./supervisor/supervisord.conf /etc/supervisor/supervisord.conf
+COPY ./supervisor/workers.conf /etc/supervisor/conf.d/workers.conf
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
