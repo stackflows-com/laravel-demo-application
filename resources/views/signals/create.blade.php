@@ -5,7 +5,7 @@
 @section('content')
     <div class="d-flex d-flex justify-content-center align-items-center h-100">
         <div class="p-md-3 p-2 text-center" style="max-width: 30rem;">
-            <h1 class="font-bold">Throw a demo signal</h1>
+            <h1 class="fw-bold">Throw a demo signal</h1>
             <p class="lead">To test demo process please enter a signal key and press "Throw signal"</p>
             <form action="{{ route('signals.store') }}" method="POST" class="mt-5 mb-5">
                 @csrf

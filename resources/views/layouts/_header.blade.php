@@ -9,6 +9,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('user_tasks.index') }}">User tasks</a>
                     </li>
+                    <li class="nav-item">
+
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login.show') }}">Login</a>
+                    </li>
                 </ul>
             </div>
         </div>

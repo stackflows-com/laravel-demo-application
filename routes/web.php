@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignalController;
 use App\Http\Controllers\UserTaskController;
 use Illuminate\Support\Facades\Route;
@@ -15,4 +16,9 @@ Route::middleware(['backofficeAuth'])->group(function () {
     Route::post('/user-tasks/{id}/complete', [UserTaskController::class, 'complete'])->name('user_tasks.complete');
     Route::post('/user-tasks/complete-all', [UserTaskController::class, 'completeAll'])
         ->name('user_tasks.complete_all');
+
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 });
+
+Route::get('/login', [LoginController::class, 'showForm'])->name('login.show');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
