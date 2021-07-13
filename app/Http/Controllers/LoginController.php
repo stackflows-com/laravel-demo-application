@@ -4,17 +4,17 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Http\Request;
-use Stackflows\StackflowsPlugin\Auth\BackofficeGuard;
+use Stackflows\StackflowsPlugin\Auth\BackofficeAuth;
 use Stackflows\StackflowsPlugin\Exceptions\InvalidCredentials;
 use Stackflows\StackflowsPlugin\Stackflows;
 
 class LoginController extends Controller
 {
-    private BackofficeGuard $auth;
+    private BackofficeAuth $auth;
 
     public function __construct(Stackflows $stackflows)
     {
-        $this->auth = $stackflows->getAuthGuard();
+        $this->auth = $stackflows->getAuth();
     }
 
     /**
