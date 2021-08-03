@@ -14,7 +14,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
-        "stackflows-com/laravel-plugin-stackflows": "dev-develop"
+        "stackflows-com/laravel-plugin-stackflows": "dev-main",
+        "stackflows-com/php-client-stackflows": "dev-master"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

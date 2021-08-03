@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "879342fe7791bee65538de0f911a8f54",
+    "content-hash": "02dc545892fe2b6a5160d44a558f10e0",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2500,22 +2500,23 @@
         },
         {
             "name": "stackflows-com/laravel-plugin-stackflows",
-            "version": "dev-develop",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stackflows-com/laravel-plugin-stackflows.git",
-                "reference": "6eb8a75de2732e56de92a48339b51fb1b4c365bd"
+                "reference": "0d929be289847464fa923f16cecc56bc83587533"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stackflows-com/laravel-plugin-stackflows/zipball/6eb8a75de2732e56de92a48339b51fb1b4c365bd",
-                "reference": "6eb8a75de2732e56de92a48339b51fb1b4c365bd",
+                "url": "https://api.github.com/repos/stackflows-com/laravel-plugin-stackflows/zipball/0d929be289847464fa923f16cecc56bc83587533",
+                "reference": "0d929be289847464fa923f16cecc56bc83587533",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
                 "ext-pcntl": "*",
                 "illuminate/contracts": "^8.37",
-                "php": "^8.0",
+                "php": "^7.4|^8.0",
                 "spatie/laravel-package-tools": "^1.4.3",
                 "stackflows-com/php-client-stackflows": "dev-master"
             },
@@ -2528,6 +2529,7 @@
                 "spatie/laravel-ray": "^1.9",
                 "vimeo/psalm": "^4.4"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -2579,10 +2581,10 @@
                 "laravel-plugin-stackflows"
             ],
             "support": {
-                "source": "https://github.com/stackflows-com/laravel-plugin-stackflows/tree/develop",
+                "source": "https://github.com/stackflows-com/laravel-plugin-stackflows/tree/main",
                 "issues": "https://github.com/stackflows-com/laravel-plugin-stackflows/issues"
             },
-            "time": "2021-07-01T15:53:30+00:00"
+            "time": "2021-07-31T10:10:14+00:00"
         },
         {
             "name": "stackflows-com/php-client-stackflows",
@@ -2590,12 +2592,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stackflows-com/php-client-stackflows.git",
-                "reference": "b67a2ae596a85a0d58ca901025ac489618abe998"
+                "reference": "e398c20480b9402a057d420139b46310039d4295"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stackflows-com/php-client-stackflows/zipball/b67a2ae596a85a0d58ca901025ac489618abe998",
-                "reference": "b67a2ae596a85a0d58ca901025ac489618abe998",
+                "url": "https://api.github.com/repos/stackflows-com/php-client-stackflows/zipball/e398c20480b9402a057d420139b46310039d4295",
+                "reference": "e398c20480b9402a057d420139b46310039d4295",
                 "shasum": ""
             },
             "require": {
@@ -2641,7 +2643,7 @@
                 "source": "https://github.com/stackflows-com/php-client-stackflows/tree/master",
                 "issues": "https://github.com/stackflows-com/php-client-stackflows/issues"
             },
-            "time": "2021-07-02T15:52:32+00:00"
+            "time": "2021-07-22T18:15:34+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -7540,7 +7542,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "stackflows-com/laravel-plugin-stackflows": 20
+        "stackflows-com/laravel-plugin-stackflows": 20,
+        "stackflows-com/php-client-stackflows": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
