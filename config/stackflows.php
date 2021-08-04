@@ -1,14 +1,13 @@
 <?php
 
 return [
-    /*
-     * Address of the Stack Flow Gateway API.
-     */
+    // Address of the Stack Flow Gateway API.
     'host' => env('STACKFLOWS_HOST'),
 
-    /*
-     * Stackflows instance UUID.
-     */
+    // Address of the Stack Flow Gateway API.
+    'backofficeHost' => env('STACKFLOWS_BACKOFFICE_HOST'),
+
+    // Stackflows instance UUID.
     'instance' => env('STACKFLOWS_INSTANCE'),
 
     /*
@@ -17,6 +16,7 @@ return [
      */
     'service_task_executors' => [
         \App\Stackflows\ServiceTask\DemoExecutor::class,
+        \App\Stackflows\ServiceTask\GenerateNumberExecutor::class,
     ],
 
     /*
@@ -25,5 +25,6 @@ return [
      */
     'user_task_sync' => [
         \App\Stackflows\UserTask\DemoSynchronizer::class,
+        \App\Stackflows\UserTask\SolveNumberSynchronizer::class,
     ],
 ];

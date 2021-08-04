@@ -5,6 +5,7 @@ namespace App\Stackflows\ServiceTask;
 use Stackflows\GatewayApi\Model\ServiceTask;
 use Stackflows\GatewayApi\Model\Variable;
 use Stackflows\StackflowsPlugin\Services\ServiceTask\ServiceTaskExecutorInterface;
+use Stackflows\StackflowsPlugin\VariableCollection;
 
 class DemoExecutor implements ServiceTaskExecutorInterface
 {
@@ -21,33 +22,23 @@ class DemoExecutor implements ServiceTaskExecutorInterface
     public function execute(ServiceTask $task): ServiceTask
     {
         echo sprintf("\nHandle service task\n id: %s\n key: %s\n", $task->getId(), $task->getProcessDefinitionKey());
-        $this->printVars($task->getVariables());
 
-        $variables = $this->changeStatus($task->getVariables());
-        $task->setVariables($variables);
+        $variables = new VariableCollection($task->getVariables());
+        $this->printVars($variables);
+
+        $variables->changeOrCreateVariableValue('status', 'awesome');
+        $task->setVariables($variables->all());
+
         return $task;
     }
 
-    private function changeStatus(array $variables): array
-    {
-        return array_map(
-            function (Variable $var) {
-                if ($var->getName() === 'status') {
-                    $var->setValue((object)['awesome']);
-                }
-                return $var;
-            },
-            $variables
-        );
-    }
-
     /**
-     * @param Variable[]|null $variables
+     * @param VariableCollection $variables
      */
-    private function printVars(?array $variables)
+    private function printVars(VariableCollection $variables)
     {
-        foreach ($variables as $var) {
-            $val = is_array($var->getValue()) ? $var->getValue()[0]: $var->getValue();
+        foreach ($variables->toArray() as $var) {
+            $val = is_array($var->getValue()) ? $var->getValue()[0] : $var->getValue();
             echo sprintf("%s: %s\n", $var->getName(), $val);
         }
     }

@@ -2,25 +2,19 @@
 
 namespace App\Stackflows\UserTask;
 
-use Illuminate\Support\Str;
 use Stackflows\GatewayApi\Model\UserTask as ApiUserTask;
 use Stackflows\StackflowsPlugin\Services\UserTask\UserTaskSyncInterface;
 
-class DemoSynchronizer implements UserTaskSyncInterface
+class SolveNumberSynchronizer implements UserTaskSyncInterface
 {
-    private string $prefix = 'user_task';
+    private string $prefix = 'Activity_SolveNumberIs';
 
     public function sync(array $items, array $params = []): void
     {
-        $tasks = [];
         foreach ($items as $item) {
-            if ($this->filter($item)) {
-                $tasks[] = $this->createTask($item);
+            if ($this->relevant($item)) {
+                $this->createTask($item);
             }
-        }
-
-        foreach ($tasks as $task) {
-            $this->executeTask($task);
         }
     }
 
@@ -34,14 +28,7 @@ class DemoSynchronizer implements UserTaskSyncInterface
         );
     }
 
-    private function executeTask(UserTask $task): void
-    {
-        // perform some actions with the task
-
-        CompleteTaskJob::dispatch($task);
-    }
-
-    private function filter(ApiUserTask $item): bool
+    private function relevant(ApiUserTask $item): bool
     {
         return str_starts_with($item->getTaskDefinitionKey(), $this->prefix);
     }

@@ -2,35 +2,48 @@
 
 namespace App\Stackflows\UserTask;
 
+use App\Casts\UserTaskStatus;
+use App\Stackflows\TaskStatus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Stackflows\StackflowsPlugin\Services\UserTask\InternalStackflowsUserTaskModel;
 
-class UserTask implements InternalStackflowsUserTaskModel
+class UserTask extends Model implements InternalStackflowsUserTaskModel
 {
-    private string $id;
-    private ?string $stackflowsUserTaskKey;
-    private ?string $stackflowsUserTaskDefinitionKey;
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var string[]|bool
+     */
+    protected $guarded = [];
 
-    public function __construct(?string $stackflowsUserTaskKey, ?string $stackflowsUserTaskDefinitionKey)
-    {
-        $this->id = (string)Str::uuid();
-        $this->stackflowsUserTaskKey = $stackflowsUserTaskKey;
-        $this->stackflowsUserTaskDefinitionKey = $stackflowsUserTaskDefinitionKey;
-    }
-
-    public function getKey(): string
-    {
-        return $this->id;
-    }
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'status' => UserTaskStatus::class,
+    ];
 
     public function getStackflowsUserTaskKey(): string
     {
-        return $this->stackflowsUserTaskKey;
+        return $this->stackflows_id;
     }
 
     public function getStackflowsUserTaskDefinitionKey(): string
     {
-        return $this->stackflowsUserTaskDefinitionKey;
+        return $this->reference;
+    }
+
+    /**
+     * Scope a query to only include pending user tasks.
+     *
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePending($query)
+    {
+        return $query->where('status', TaskStatus::PENDING);
     }
 }
