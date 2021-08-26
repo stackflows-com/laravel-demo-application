@@ -1,24 +1,16 @@
 <?php
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\SignalController;
-use App\Http\Controllers\UserTaskController;
 use Illuminate\Support\Facades\Route;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-Route::view('/', 'welcome');
-
-Route::middleware(['backofficeAuth'])->group(function () {
-    Route::get('/throw-signal', [SignalController::class, 'create'])->name('signals.create');
-    Route::post('/throw-signal', [SignalController::class, 'store'])->name('signals.store');
-
-    Route::get('/user-tasks', [UserTaskController::class, 'index'])->name('user_tasks.index');
-    Route::post('/user-tasks/{id}/complete', [UserTaskController::class, 'complete'])->name('user_tasks.complete');
-    Route::post('/user-tasks/complete-all', [UserTaskController::class, 'completeAll'])
-        ->name('user_tasks.complete_all');
-
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-});
-
-Route::get('/login', [LoginController::class, 'showForm'])->name('login.show');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/', [\App\Http\Controllers\Demo::class, 'index']);
