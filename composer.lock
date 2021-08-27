@@ -2831,12 +2831,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stackflows-com/laravel-plugin-stackflows.git",
-                "reference": "f178dd6f3c1857c0624adf40d2c02170eb3407b8"
+                "reference": "a9ab34f5e271ecd29f4e95271cf0480feb896bbb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stackflows-com/laravel-plugin-stackflows/zipball/f178dd6f3c1857c0624adf40d2c02170eb3407b8",
-                "reference": "f178dd6f3c1857c0624adf40d2c02170eb3407b8",
+                "url": "https://api.github.com/repos/stackflows-com/laravel-plugin-stackflows/zipball/a9ab34f5e271ecd29f4e95271cf0480feb896bbb",
+                "reference": "a9ab34f5e271ecd29f4e95271cf0480feb896bbb",
                 "shasum": ""
             },
             "require": {
@@ -2908,7 +2908,7 @@
                 "source": "https://github.com/stackflows-com/laravel-plugin-stackflows/tree/v2",
                 "issues": "https://github.com/stackflows-com/laravel-plugin-stackflows/issues"
             },
-            "time": "2021-08-25T21:16:29+00:00"
+            "time": "2021-08-27T08:54:38+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -6026,16 +6026,16 @@
         },
         {
             "name": "nunomaduro/collision",
-            "version": "v5.8.0",
+            "version": "v5.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/collision.git",
-                "reference": "0c3c393462eada1233513664e2d22bb9f69ca393"
+                "reference": "63456f5c3e8c4bc52bd573e5c85674d64d84fd43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/0c3c393462eada1233513664e2d22bb9f69ca393",
-                "reference": "0c3c393462eada1233513664e2d22bb9f69ca393",
+                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/63456f5c3e8c4bc52bd573e5c85674d64d84fd43",
+                "reference": "63456f5c3e8c4bc52bd573e5c85674d64d84fd43",
                 "shasum": ""
             },
             "require": {
@@ -6110,7 +6110,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-08-13T14:23:01+00:00"
+            "time": "2021-08-26T15:32:09+00:00"
         },
         {
             "name": "phar-io/manifest",
