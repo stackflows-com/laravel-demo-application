@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3165661595c305d450c290f8238cb9cb",
+    "content-hash": "3bb6f26f69d487318db71b10a416f31d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2890,7 +2890,7 @@
         },
         {
             "name": "stackflows-com/laravel-plugin-stackflows",
-            "version": "v2.x-dev",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stackflows-com/laravel-plugin-stackflows.git",
@@ -2921,6 +2921,7 @@
                 "spatie/laravel-ray": "^1.9",
                 "vimeo/psalm": "^4.9"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -2971,7 +2972,7 @@
                 "laravel-plugin-stackflows"
             ],
             "support": {
-                "source": "https://github.com/stackflows-com/laravel-plugin-stackflows/tree/v2",
+                "source": "https://github.com/stackflows-com/laravel-plugin-stackflows/tree/main",
                 "issues": "https://github.com/stackflows-com/laravel-plugin-stackflows/issues"
             },
             "time": "2021-08-29T19:36:39+00:00"
