@@ -2,13 +2,23 @@
 
 namespace App\Bpmn\Tasks;
 
-use Stackflows\StackflowsPlugin\Services\ServiceTask\ServiceTaskExecutorInterface;
+use App\Bpmn\Models\CargoModel;
+use App\Bpmn\Requests\RetrieveVehicleActiveCargoesTaskRequest;
+use App\Bpmn\Responses\RetrieveVehicleActiveCargoesTaskResponse;
+use Stackflows\StackflowsPlugin\Bpmn\ExternalTasks\ExternalTaskExecutorInterface;
+use Stackflows\StackflowsPlugin\Bpmn\Requests\ExternalTaskRequestInterface;
+use Stackflows\StackflowsPlugin\Bpmn\Responses\ExternalTaskResponseInterface;
 
-final class RetrieveVehicleActiveCargoesTaskExecutor implements ServiceTaskExecutorInterface
+final class RetrieveVehicleActiveCargoesTaskExecutor implements ExternalTaskExecutorInterface
 {
     public function getTopic(): string
     {
         return 'RETRIEVE_VEHICLE_ACTIVE_CARGOES';
+    }
+
+    public function getRequestObjectClass(): string
+    {
+        return RetrieveVehicleActiveCargoesTaskRequest::class;
     }
 
     public function getLockDuration(): int
@@ -16,28 +26,32 @@ final class RetrieveVehicleActiveCargoesTaskExecutor implements ServiceTaskExecu
         return config('app.debug') ? 1 : 60000; // will take 5 minutes to resolve task again if failure occurred
     }
 
-    public function execute(): ?array
+    public function execute(ExternalTaskRequestInterface $task): ExternalTaskResponseInterface
     {
-        $items = [];
-        $items[] = [
-            'id' => 'BT1212',
-            'temperatureSensitive' => 1,
-            'requiredTemperature' => '-20',
-            'requiredEngineRunMode' => null,
-            'minTemperature' => '-15',
-            'maxTemperature' => '-30',
-        ];
-        $items[] = [
-            'id' => 'FF443',
-            'temperatureSensitive' => 0,
-            'requiredTemperature' => '-20',
-            'requiredEngineRunMode' => null,
-            'minTemperature' => '-15',
-            'maxTemperature' => '-30',
-        ];
+        // TODO: Implement execute() method.
 
+        $response = new RetrieveVehicleActiveCargoesTaskResponse();
 
+        $cargo = new CargoModel();
+        $cargo->setId(1);
+        $cargo->setMaxTemperature(15);
+        $cargo->setMinTemperature(5);
+        $cargo->setRequiredEngineRunMode('con');
+        $cargo->setRequiredTemperature(12);
+        $cargo->setTemperatureSensitive(true);
 
-        return ['vehicleActiveCargoes' => ['value' => $items]];
+        $response->add($cargo);
+
+        $cargo = new CargoModel();
+        $cargo->setId(2);
+        $cargo->setMaxTemperature(30);
+        $cargo->setMinTemperature(20);
+        $cargo->setRequiredEngineRunMode('con');
+        $cargo->setRequiredTemperature(23);
+        $cargo->setTemperatureSensitive(false);
+
+        $response->add($cargo);
+
+        return $response;
     }
 }
