@@ -2,7 +2,7 @@
 
 namespace App\Bpmn\Models;
 
-class CargoModel
+class Cargo
 {
     private string $id;
     private string $temperatureSensitive;
