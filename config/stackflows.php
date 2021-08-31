@@ -7,17 +7,9 @@ return [
     // Gateway Auth token
     'authToken' => env('STACKFLOWS_AUTH_TOKEN'),
 
-    /*
-     * Service task executors are classes that handle Stackflows service tasks.
-     * Must implements interface \Stackflows\StackflowsPlugin\Services\ServiceTask\ServiceTaskExecutorInterface
-     */
-    'service_task_executors' => [
+    'external_task_executors' => [
         \App\Bpmn\Tasks\RetrieveVehicleActiveCargoesTaskExecutor::class
     ],
 
-    /*
-     * User task synchronizers are classes that handle Stackflows service tasks.
-     * Must implements interface \Stackflows\StackflowsPlugin\Services\UserTask\UserTaskSyncInterface
-     */
     'user_task_sync' => [],
 ];

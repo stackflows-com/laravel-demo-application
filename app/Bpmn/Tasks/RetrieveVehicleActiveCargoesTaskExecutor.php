@@ -3,6 +3,7 @@
 namespace App\Bpmn\Tasks;
 
 use App\Bpmn\Models\Cargo;
+use App\Bpmn\Models\CargoCollection;
 use App\Bpmn\Requests\RetrieveVehicleActiveCargoesTaskRequest;
 use App\Bpmn\Responses\RetrieveVehicleActiveCargoesTaskResponse;
 use Stackflows\StackflowsPlugin\Bpmn\ExternalTasks\ExternalTaskExecutorInterface;
@@ -30,7 +31,7 @@ final class RetrieveVehicleActiveCargoesTaskExecutor implements ExternalTaskExec
     {
         // TODO: Implement execute() method.
 
-        $response = new RetrieveVehicleActiveCargoesTaskResponse();
+        $cargoes = new CargoCollection();
 
         $cargo = new Cargo();
         $cargo->setId(1);
@@ -40,7 +41,7 @@ final class RetrieveVehicleActiveCargoesTaskExecutor implements ExternalTaskExec
         $cargo->setRequiredTemperature(12);
         $cargo->setTemperatureSensitive(true);
 
-        $response->add($cargo);
+        $cargoes->add($cargo);
 
         $cargo = new Cargo();
         $cargo->setId(2);
@@ -50,8 +51,8 @@ final class RetrieveVehicleActiveCargoesTaskExecutor implements ExternalTaskExec
         $cargo->setRequiredTemperature(23);
         $cargo->setTemperatureSensitive(false);
 
-        $response->add($cargo);
+        $cargoes->add($cargo);
 
-        return $response;
+        return new RetrieveVehicleActiveCargoesTaskResponse($cargoes);
     }
 }
