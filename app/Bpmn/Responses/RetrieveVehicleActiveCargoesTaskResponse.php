@@ -2,6 +2,7 @@
 
 namespace App\Bpmn\Responses;
 
+use App\Bpmn\Models\Cargo;
 use App\Bpmn\Models\CargoCollection;
 use Stackflows\StackflowsPlugin\Bpmn\Responses\ExternalTaskResponseInterface;
 
@@ -32,6 +33,19 @@ class RetrieveVehicleActiveCargoesTaskResponse implements ExternalTaskResponseIn
 
     public function toArray(): array
     {
-        return $this->getCargoes()->toArray();
+        $output = [];
+        /** @var Cargo $cargo */
+        foreach ($this->cargoes as $cargo) {
+            $output[] = [
+                'id' => $cargo->getId(),
+                'maxTemperature' => $cargo->getMaxTemperature(),
+                'minTemperature' => $cargo->getMinTemperature(),
+                'requiredEngineRunMode' => $cargo->getRequiredEngineRunMode(),
+                'requiredTemperature' => $cargo->getRequiredTemperature(),
+                'temperatureSensitive' => $cargo->getTemperatureSensitive(),
+            ];
+        }
+
+        return $output;
     }
 }
