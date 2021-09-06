@@ -24,7 +24,7 @@ final class RetrieveVehicleActiveCargoesTaskExecutor implements ExternalTaskExec
 
     public function getLockDuration(): int
     {
-        return config('app.debug') ? 1 : 60000; // will take 5 minutes to resolve task again if failure occurred
+        return config('app.debug') ? 1 : 10000; // will take 5 minutes to resolve task again if failure occurred
     }
 
     public function execute(ExternalTaskRequestInterface $task): ExternalTaskResponseInterface
