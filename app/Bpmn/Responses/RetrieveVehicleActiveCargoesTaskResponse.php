@@ -4,9 +4,9 @@ namespace App\Bpmn\Responses;
 
 use App\Bpmn\Models\Cargo;
 use App\Bpmn\Models\CargoCollection;
-use Stackflows\StackflowsPlugin\Bpmn\Responses\ExternalTaskResponseInterface;
+use Stackflows\StackflowsPlugin\Bpmn\Outputs\ExternalTaskOutputInterface;
 
-class RetrieveVehicleActiveCargoesTaskResponse implements ExternalTaskResponseInterface
+class RetrieveVehicleActiveCargoesTaskResponse implements ExternalTaskOutputInterface
 {
     private CargoCollection $cargoes;
 

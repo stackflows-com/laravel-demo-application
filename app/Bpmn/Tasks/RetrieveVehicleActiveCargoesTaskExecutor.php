@@ -7,8 +7,8 @@ use App\Bpmn\Models\CargoCollection;
 use App\Bpmn\Requests\RetrieveVehicleActiveCargoesTaskRequest;
 use App\Bpmn\Responses\RetrieveVehicleActiveCargoesTaskResponse;
 use Stackflows\StackflowsPlugin\Bpmn\ExternalTasks\ExternalTaskExecutorInterface;
-use Stackflows\StackflowsPlugin\Bpmn\Requests\ExternalTaskRequestInterface;
-use Stackflows\StackflowsPlugin\Bpmn\Responses\ExternalTaskResponseInterface;
+use Stackflows\StackflowsPlugin\Bpmn\Inputs\ExternalTaskInputInterface;
+use Stackflows\StackflowsPlugin\Bpmn\Outputs\ExternalTaskOutputInterface;
 
 final class RetrieveVehicleActiveCargoesTaskExecutor implements ExternalTaskExecutorInterface
 {
@@ -27,7 +27,7 @@ final class RetrieveVehicleActiveCargoesTaskExecutor implements ExternalTaskExec
         return config('app.debug') ? 1 : 10000; // will take 5 minutes to resolve task again if failure occurred
     }
 
-    public function execute(ExternalTaskRequestInterface $task): ExternalTaskResponseInterface
+    public function execute(ExternalTaskInputInterface $task): ExternalTaskOutputInterface
     {
         // TODO: Implement execute() method.
 
