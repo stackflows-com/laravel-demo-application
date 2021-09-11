@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Bpmn\Responses;
+namespace App\Bpmn\Output;
 
 use App\Bpmn\Models\Cargo;
 use App\Bpmn\Models\CargoCollection;
 use Stackflows\StackflowsPlugin\Bpmn\Outputs\ExternalTaskOutputInterface;
 
-class RetrieveVehicleActiveCargoesTaskResponse implements ExternalTaskOutputInterface
+class RetrieveVehicleActiveCargoesTaskOutput implements ExternalTaskOutputInterface
 {
     private CargoCollection $cargoes;
 
@@ -31,11 +31,11 @@ class RetrieveVehicleActiveCargoesTaskResponse implements ExternalTaskOutputInte
         $this->cargoes = $cargoes;
     }
 
-    public function toArray(): array
+    public function getVariables(): array
     {
         $output = [];
         /** @var Cargo $cargo */
-        foreach ($this->cargoes as $cargo) {
+        foreach ($this->getCargoes() as $cargo) {
             $output[] = [
                 'id' => $cargo->getId(),
                 'maxTemperature' => $cargo->getMaxTemperature(),
@@ -46,6 +46,6 @@ class RetrieveVehicleActiveCargoesTaskResponse implements ExternalTaskOutputInte
             ];
         }
 
-        return $output;
+        return ['vehicleActiveCargoes' => $output];
     }
 }

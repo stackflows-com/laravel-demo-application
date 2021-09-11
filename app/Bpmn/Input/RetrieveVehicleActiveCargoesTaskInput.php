@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Bpmn\Requests;
+namespace App\Bpmn\Input;
 
-use Stackflows\StackflowsPlugin\Bpmn\Requests\AbstractExternalTaskRequest;
+use Stackflows\StackflowsPlugin\Bpmn\Inputs\AbstractExternalTaskInput;
 
-class RetrieveVehicleActiveCargoesTaskRequest extends AbstractExternalTaskRequest
+class RetrieveVehicleActiveCargoesTaskInput extends AbstractExternalTaskInput
 {
     private string $vehicleLicensePlate;
 

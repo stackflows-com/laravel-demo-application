@@ -2,10 +2,11 @@
 
 namespace App\Bpmn\Tasks;
 
+use App\Bpmn\Input\RetrieveVehicleActiveCargoesTaskInput;
 use App\Bpmn\Models\Cargo;
 use App\Bpmn\Models\CargoCollection;
-use App\Bpmn\Requests\RetrieveVehicleActiveCargoesTaskRequest;
-use App\Bpmn\Responses\RetrieveVehicleActiveCargoesTaskResponse;
+use App\Bpmn\Input\RetrieveVehicleActiveCargoesTaskRequest;
+use App\Bpmn\Output\RetrieveVehicleActiveCargoesTaskOutput;
 use Stackflows\StackflowsPlugin\Bpmn\ExternalTasks\ExternalTaskExecutorInterface;
 use Stackflows\StackflowsPlugin\Bpmn\Inputs\ExternalTaskInputInterface;
 use Stackflows\StackflowsPlugin\Bpmn\Outputs\ExternalTaskOutputInterface;
@@ -19,7 +20,7 @@ final class RetrieveVehicleActiveCargoesTaskExecutor implements ExternalTaskExec
 
     public function getRequestObjectClass(): string
     {
-        return RetrieveVehicleActiveCargoesTaskRequest::class;
+        return RetrieveVehicleActiveCargoesTaskInput::class;
     }
 
     public function getLockDuration(): int
@@ -53,6 +54,6 @@ final class RetrieveVehicleActiveCargoesTaskExecutor implements ExternalTaskExec
 
         $cargoes->add($cargo);
 
-        return new RetrieveVehicleActiveCargoesTaskResponse($cargoes);
+        return new RetrieveVehicleActiveCargoesTaskOutput($cargoes);
     }
 }
