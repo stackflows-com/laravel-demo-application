@@ -3,10 +3,6 @@
 namespace App\Bpmn\Tasks;
 
 use App\Bpmn\Input\RetrieveVehicleActiveCargoesTaskInput;
-use App\Bpmn\Models\Cargo;
-use App\Bpmn\Models\CargoCollection;
-use App\Bpmn\Input\RetrieveVehicleActiveCargoesTaskRequest;
-use App\Bpmn\Output\RetrieveVehicleActiveCargoesTaskOutput;
 use Stackflows\StackflowsPlugin\Bpmn\ExternalTasks\ExternalTaskExecutorInterface;
 use Stackflows\StackflowsPlugin\Bpmn\Inputs\ExternalTaskInputInterface;
 use Stackflows\StackflowsPlugin\Bpmn\Outputs\ExternalTaskOutputInterface;
