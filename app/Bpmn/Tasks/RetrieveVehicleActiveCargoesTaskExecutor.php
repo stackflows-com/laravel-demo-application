@@ -10,6 +10,8 @@ use App\Bpmn\Output\RetrieveVehicleActiveCargoesTaskOutput;
 use Stackflows\StackflowsPlugin\Bpmn\ExternalTasks\ExternalTaskExecutorInterface;
 use Stackflows\StackflowsPlugin\Bpmn\Inputs\ExternalTaskInputInterface;
 use Stackflows\StackflowsPlugin\Bpmn\Outputs\ExternalTaskOutputInterface;
+use Stackflows\StackflowsPlugin\Bpmn\Outputs\StandardOutput;
+use Stackflows\StackflowsPlugin\Bpmn\Outputs\Variable;
 
 final class RetrieveVehicleActiveCargoesTaskExecutor implements ExternalTaskExecutorInterface
 {
@@ -30,30 +32,33 @@ final class RetrieveVehicleActiveCargoesTaskExecutor implements ExternalTaskExec
 
     public function execute(ExternalTaskInputInterface $task): ExternalTaskOutputInterface
     {
-        // TODO: Implement execute() method.
+        $cargoes = [
+            [
+                'maxTemperature' => 15,
+                'minTemperature' => -20,
+                'requiredEngineRunMode' => 'con',
+                'requiredTemperature' => 18,
+                'temperatureSensitive' => true,
+            ],
+            [
+                'maxTemperature' => 15,
+                'minTemperature' => -20,
+                'requiredEngineRunMode' => 'con',
+                'requiredTemperature' => 18,
+                'temperatureSensitive' => false,
+            ]
+        ];
 
-        $cargoes = new CargoCollection();
+        $output = new StandardOutput();
 
-        $cargo = new Cargo();
-        $cargo->setId(1);
-        $cargo->setMaxTemperature(15);
-        $cargo->setMinTemperature(5);
-        $cargo->setRequiredEngineRunMode('con');
-        $cargo->setRequiredTemperature(12);
-        $cargo->setTemperatureSensitive(true);
+        $variable = new Variable();
+        $variable->setType('Object');
+        $variable->setName('vehicleActiveCargoes');
+        $variable->setValue(json_encode($cargoes));
+//        $variable->setSerializationDataFormat('application/x-java-serialized-object');
 
-        $cargoes->add($cargo);
+        $output->addVariable($variable);
 
-        $cargo = new Cargo();
-        $cargo->setId(2);
-        $cargo->setMaxTemperature(30);
-        $cargo->setMinTemperature(20);
-        $cargo->setRequiredEngineRunMode('con');
-        $cargo->setRequiredTemperature(23);
-        $cargo->setTemperatureSensitive(false);
-
-        $cargoes->add($cargo);
-
-        return new RetrieveVehicleActiveCargoesTaskOutput($cargoes);
+        return $output;
     }
 }
