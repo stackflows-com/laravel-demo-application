@@ -48,10 +48,8 @@ final class RetrieveVehicleActiveCargoesTaskExecutor implements ExternalTaskExec
         $output = new StandardOutput();
 
         $variable = new Variable();
-        $variable->setType('Object');
         $variable->setName('vehicleActiveCargoes');
-        $variable->setValue(json_encode($cargoes));
-//        $variable->setSerializationDataFormat('application/x-java-serialized-object');
+        $variable->setValue($cargoes);
 
         $output->addVariable($variable);
 
