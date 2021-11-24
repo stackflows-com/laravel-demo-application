@@ -2850,12 +2850,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stackflows-com/laravel-plugin-stackflows.git",
-                "reference": "85a429f71ab94b648c427252f3aa81dc4f7c937c"
+                "reference": "d99c2e455a5a6b3a33403599e26421b505cbccfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stackflows-com/laravel-plugin-stackflows/zipball/85a429f71ab94b648c427252f3aa81dc4f7c937c",
-                "reference": "85a429f71ab94b648c427252f3aa81dc4f7c937c",
+                "url": "https://api.github.com/repos/stackflows-com/laravel-plugin-stackflows/zipball/d99c2e455a5a6b3a33403599e26421b505cbccfc",
+                "reference": "d99c2e455a5a6b3a33403599e26421b505cbccfc",
                 "shasum": ""
             },
             "require": {
@@ -2912,7 +2912,7 @@
                 "source": "https://github.com/stackflows-com/laravel-plugin-stackflows/tree/main",
                 "issues": "https://github.com/stackflows-com/laravel-plugin-stackflows/issues"
             },
-            "time": "2021-11-17T20:31:21+00:00"
+            "time": "2021-11-24T20:01:59+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
