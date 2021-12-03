@@ -1,23 +1,17 @@
 <?php
 
 return [
-    // Address of the Stack Flow Gateway API.
-    'gatewayHost' => env('STACKFLOWS_GATEWAY_HOST'),
+    // Address of the Stack Flows API.
+    'apiHost' => env('STACKFLOWS_API_HOST'),
 
-    // Gateway Auth token
+    // API Auth token
     'authToken' => env('STACKFLOWS_AUTH_TOKEN'),
+    'environmentToken' => env('STACKFLOWS_ENVIRONMENT_TOKEN'),
 
-    /*
-     * Service task executors are classes that handle Stackflows service tasks.
-     * Must implements interface \Stackflows\StackflowsPlugin\Services\ServiceTask\ServiceTaskExecutorInterface
-     */
-    'service_task_executors' => [
-        \App\Bpmn\Tasks\RetrieveVehicleActiveCargoesTaskExecutor::class
+    'external_task_executors' => [
+        \App\Bpmn\Tasks\RetrieveVehicleActiveCargoesTaskExecutor::class,
+        \App\Bpmn\Tasks\RetrieveActiveLastTaskTaskExecutor::class,
     ],
 
-    /*
-     * User task synchronizers are classes that handle Stackflows service tasks.
-     * Must implements interface \Stackflows\StackflowsPlugin\Services\UserTask\UserTaskSyncInterface
-     */
     'user_task_sync' => [],
 ];

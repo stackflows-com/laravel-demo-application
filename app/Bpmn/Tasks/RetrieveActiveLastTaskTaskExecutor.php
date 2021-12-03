@@ -2,6 +2,7 @@
 
 namespace App\Bpmn\Tasks;
 
+use App\Bpmn\Input\LastActivePrecedingTaskInput;
 use App\Bpmn\Input\RetrieveVehicleActiveCargoesTaskInput;
 use Stackflows\StackflowsPlugin\Bpmn\ExternalTasks\ExternalTaskExecutorInterface;
 use Stackflows\StackflowsPlugin\Bpmn\Inputs\ExternalTaskInputInterface;
@@ -9,16 +10,16 @@ use Stackflows\StackflowsPlugin\Bpmn\Outputs\ExternalTaskOutputInterface;
 use Stackflows\StackflowsPlugin\Bpmn\Outputs\StandardOutput;
 use Stackflows\StackflowsPlugin\Bpmn\Outputs\Variable;
 
-final class RetrieveVehicleActiveCargoesTaskExecutor implements ExternalTaskExecutorInterface
+final class RetrieveActiveLastTaskTaskExecutor implements ExternalTaskExecutorInterface
 {
     public function getTopic(): string
     {
-        return 'RETRIEVE_VEHICLE_ACTIVE_CARGOES';
+        return 'RETRIEVE_LAST_ACTIVE_PRECEDING_TASK';
     }
 
     public function getInputClass(): string
     {
-        return RetrieveVehicleActiveCargoesTaskInput::class;
+        return LastActivePrecedingTaskInput::class;
     }
 
     public function getLockDuration(): int
@@ -28,25 +29,15 @@ final class RetrieveVehicleActiveCargoesTaskExecutor implements ExternalTaskExec
 
     public function execute(ExternalTaskInputInterface $task): ?ExternalTaskOutputInterface
     {
-        $cargoes = [
+        $tasks = [
             [
-                'maxTemperature' => 15,
-                'minTemperature' => -20,
-                'requiredEngineRunMode' => 'con',
-                'requiredTemperature' => 18,
-                'temperatureSensitive' => true,
-            ],
-            [
-                'maxTemperature' => 15,
-                'minTemperature' => -20,
-                'requiredEngineRunMode' => 'con',
-                'requiredTemperature' => 18,
-                'temperatureSensitive' => false,
+                'person' => 'Max'
             ]
         ];
 
         $output = new StandardOutput();
-        $output->addVariable('vehicleActiveCargoes', $cargoes);
+//        $output->addVariable('precedingTask', $tasks);
+        $output->addVariable('precedingTask', null);
 
         return $output;
     }
