@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use GuzzleHttp\Exception\ConnectException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 

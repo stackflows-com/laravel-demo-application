@@ -1,17 +1,15 @@
 <?php
 
 return [
-    // Address of the Stack Flows API.
-    'apiHost' => env('STACKFLOWS_API_HOST'),
+    // For debugging purposes you might want to set this to false, otherwise it should always be true
+    'secure' => env('STACKFLOWS_SECURE', true),
 
-    // API Auth token
-    'authToken' => env('STACKFLOWS_AUTH_TOKEN'),
-    'environmentToken' => env('STACKFLOWS_ENVIRONMENT_TOKEN'),
+    // Host of the Stackflows API
+    'host' => env('STACKFLOWS_HOST', 'backoffice.stackflows.com'),
 
-    'external_task_executors' => [
-        \App\Bpmn\Tasks\RetrieveVehicleActiveCargoesTaskExecutor::class,
-        \App\Bpmn\Tasks\RetrieveActiveLastTaskTaskExecutor::class,
-    ],
+    // You can use specific version for calling Stackflows API
+    'version' => env('STACKFLOWS_VERSION', '2'),
 
-    'user_task_sync' => [],
+    // Company environment token that is used for application wide authentication
+    'token' => env('STACKFLOWS_TOKEN'),
 ];

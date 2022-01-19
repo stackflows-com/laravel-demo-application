@@ -1,16 +1,16 @@
 <?php
 
+use App\Http\Controllers\ProcessController;
+use App\Http\Controllers\UserTaskController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', [\App\Http\Controllers\Demo::class, 'index']);
+Route::view('/', 'welcome');
+
+Route::get('/process/form', [ProcessController::class, 'form'])->name('process.form');
+Route::post('/process/start', [ProcessController::class, 'start'])->name('process.start');
+
+Route::get('/user-tasks', [UserTaskController::class, 'index'])->name('user_tasks.index');
+Route::post('/user-tasks/{id}/complete', [UserTaskController::class, 'complete'])->name('user_tasks.complete');
+Route::post('/user-tasks/complete-all', [UserTaskController::class, 'completeAll'])
+    ->name('user_tasks.complete_all');
