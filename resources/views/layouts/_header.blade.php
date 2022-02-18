@@ -10,7 +10,15 @@
                         <a class="nav-link" href="{{ route('user_tasks.index') }}">User tasks</a>
                     </li>
                     <li class="nav-item">
-
+                        <a class="nav-link" href="{{ route('variables.index') }}">Variables</a>
+                        <ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('variables.index') }}">Variables list</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('variables.create') }}">Create variable</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
