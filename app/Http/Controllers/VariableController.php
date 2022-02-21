@@ -51,7 +51,11 @@ class VariableController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $this->validateVariable($request);
+        $validation = $this->validateVariable($request);
+        if (! $validation['status']) {
+            return redirect()->back()
+                ->withErrors($validation['errors']);
+        }
 
         $options = json_decode($request->input('options', '[]'), true);
 
@@ -95,7 +99,11 @@ class VariableController extends Controller
      */
     public function update(string $id, Request $request): RedirectResponse
     {
-        $this->validateVariable($request);
+        $validation = $this->validateVariable($request);
+        if (! $validation['status']) {
+            return redirect()->back()
+                ->withErrors($validation['errors']);
+        }
 
         $options = json_decode($request->input('options', '[]'), true);
 
@@ -123,13 +131,13 @@ class VariableController extends Controller
      */
     protected function validateVariable(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'type' => 'required|string',
-        ]);
+        $options = json_decode($request->input('options', '[]'), true);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator);
-        }
+        return $this->stackflows->validateVariable(
+            $request->input('type'),
+            $request->input('name'),
+            $request->input('values', ''),
+            $options,
+        );
     }
 }
