@@ -52,9 +52,9 @@ class VariableController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validation = $this->validateVariable($request);
-        if (! $validation['status']) {
+        if (! $this->isValidaVariableResponse($validation)) {
             return redirect()->back()
-                ->withErrors($validation['errors']);
+                ->withErrors($validation['errors'] ?? ['Validation error']);
         }
 
         $options = json_decode($request->input('options', '[]'), true);
@@ -100,9 +100,9 @@ class VariableController extends Controller
     public function update(string $id, Request $request): RedirectResponse
     {
         $validation = $this->validateVariable($request);
-        if (! $validation['status']) {
+        if (! $this->isValidaVariableResponse($validation)) {
             return redirect()->back()
-                ->withErrors($validation['errors']);
+                ->withErrors($validation['errors'] ?? ['Validation error']);
         }
 
         $options = json_decode($request->input('options', '[]'), true);
@@ -133,11 +133,20 @@ class VariableController extends Controller
     {
         $options = json_decode($request->input('options', '[]'), true);
 
-        return $this->stackflows->validateVariable(
-            $request->input('type'),
-            $request->input('name'),
-            $request->input('values', ''),
-            $options,
-        );
+        $variables = [
+            [
+                'type' => $request->input('type'),
+                'name' => $request->input('name'),
+                'value' => $request->input('values', ''),
+                'option' => $options,
+            ]
+        ];
+
+        return $this->stackflows->validateVariables($variables);
+    }
+
+    protected function isValidaVariableResponse($validation):bool
+    {
+        return ! is_null($validation['status']) && $validation['status'] === true;
     }
 }
